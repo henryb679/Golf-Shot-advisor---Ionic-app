@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>START ADVISOR</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid fixed="true">
+    <ion-row justify-content-center-padding>
+      <ion-col>
+        <ion-item>
+          <!-- This allows the user to enter the name of the golf course-->
+          <ion-input [(ngModel)]="golfCourseName" placeholder="Golf course name" required></ion-input>
+        </ion-item>
+      </ion-col>
+
+    </ion-row>
+
+    <br>
+
+    <ion-row justify-content-center-padding>
+      <ion-col>
+        <ion-label>No of Holes</ion-label>
+        <!-- This allows the user to select a set hole number for the respective golf course through the use of a ion-select item-->
+        <!-- Additional ion-select item options can be added without impacting on the populating of par, hole input boxes-->
+        <ion-select [(ngModel)]="holeNumber" placeholder="Select One" required>
+          <ion-select-option value="3">3</ion-select-option>
+          <ion-select-option value="9">9</ion-select-option>
+          <ion-select-option value="18">18</ion-select-option>
+        </ion-select>
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row justify-content-center-padding>
+      <ion-col text-center>
+        <!--  Before the user can enter the raw golf data, both the holeNumber and golfCourseName must be entered first-->
+        <ion-button (click)="populateInput()" [disabled]="!golfCourseName || !holeNumber" color="tertiary">
+          <ion-icon name="add" size="small" slot="icon-only"></ion-icon>
+          &nbsp;Populate
+        </ion-button>
+      </ion-col>
+
+    </ion-row>
+
+    <!--  Once the populate button is selected, then the user can enter the raw data -->
+    <ion-card *ngIf="populateInputFlag">
+      <ion-card-header>Enter your raw golf results here (0-6)</ion-card-header>
+
+      <!--  The par and hole input boxes are made dynamically which is dependent on holeNumber selected -->
+      <ion-row *ngFor="let popInputFields of ' '.repeat(holeNumber).split(''), let x = index">
+        <ion-col col-1 padding>
+          HOLE NO: {{x+1}}
+        </ion-col>
+
+        <ion-col col-2>
+          <!-- This allows the user to manually enter their own par and hole scores according-->
+          <ion-input type="number" [(ngModel)]="parResult[x]" class="parInput" placeholder="Par {{x+1}}" [min]="minScore" [max]="maxScore" [attr.maxlength]="attrMaxLength" required></ion-input>
+        </ion-col>
+
+        <ion-col col-3>
+          <ion-input type="number" [(ngModel)]="holeResult[x]" class="scoreInput" placeholder="Hole {{x+1}}" [min]="minScore" [max]="maxScore" [attr.maxlength]="attrMaxLength" required></ion-input>
+        </ion-col>
+        <br>
+      </ion-row>
+
+    </ion-card>
+
+    <ion-row justify-content-center-padding>
+      <br>
+      <ion-col col-1>
+        <!-- When pressed, the user can clear the par and score inputs as needed -->
+        <ion-button (click)="clearInput()" color="secondary">
+          Clear input
+        </ion-button>
+      </ion-col>
+
+      <ion-col col-2>
+        <!-- When pressed, the user can send their data to the db but validation has been added to prevent invalid inputs -->
+        <!-- The create golf record button is disabled until all the input boxes are filled in and are valid -->
+        <ion-button (click)="createRecord()" [disabled]="disableGolfRecordButton()">
+          Create Golf record
+        </ion-button>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

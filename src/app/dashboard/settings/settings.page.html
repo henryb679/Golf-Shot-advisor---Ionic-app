@@ -1,0 +1,34 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>SETTINGS</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-grid>
+    <ion-row justify-content-center-padding>
+        <ion-col justify-content-center-padding size="auto">
+            <p>GOLF SHOT ADVISOR</p>
+        </ion-col>
+    </ion-row>
+
+    <ion-row justify-content-center-padding>
+        <ion-col justify-content-center-padding size="auto">
+            <p>Welcome {{firebaseAuth.email}}</p>
+        </ion-col>
+    </ion-row>
+
+    <!-- Prints out the number of golf data records the current user has entered-->
+    <ion-row justify-content-center-padding>
+        <ion-col justify-content-center-padding size="auto">
+            <p>You have {{noOfRecord}} golf result records</p>
+        </ion-col>
+    </ion-row>
+
+    <br>
+    <!-- Allows the user to log out of the system-->
+    <ion-row justify-content-center-padding>
+        <ion-col justify-content-center-padding size="auto">
+            <ion-button (click)="logout()" color="secondary">LOGOUT</ion-button>
+        </ion-col>
+    </ion-row>
+</ion-grid>

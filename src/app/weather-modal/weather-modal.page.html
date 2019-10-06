@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="primary">
+      <ion-button (click)="return()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>WEATHER INFO</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header color="tertiary" ng-if="gpsAvailable">
+      <ion-card-title color="light">Weather report</ion-card-title>
+    </ion-card-header>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col col-1>
+          <ion-icon class="weatherIcon" name="{{weatherType}}"></ion-icon>
+        </ion-col>
+
+        <ion-col col-2>
+          <ion-item>Description: {{weatherDescription}} </ion-item>
+          <ion-item>City: {{city}} </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-1>
+          <ion-item><b>Temperature</b></ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-1>
+        </ion-col>
+
+        <ion-col col-2>
+          <ion-item>Min: {{minTemp}} °C</ion-item>
+          <ion-item>Average: {{temp}} °C</ion-item>
+          <ion-item>Max: {{maxTemp}} °C</ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+      <ion-col col-1>
+        <ion-item><b>Humidity & Pressure</b></ion-item>
+      </ion-col>
+    </ion-row>
+
+      <ion-row>
+        <ion-col col-1>
+        </ion-col>
+
+        <ion-col col-2>
+          <ion-item>Humidity: {{humidity}} %</ion-item>
+          <ion-item>Pressure: {{pressure}} P</ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-1>
+          <ion-item><b>Wind speed & direction</b></ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-1>
+        </ion-col>
+
+        <ion-col col-2>
+          <ion-item>Speed: {{windSpeed}} meter/sec</ion-item>
+          <ion-item>Direction: {{windDirection}} °</ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-card-subtitle>Weather provided by OpenWeatherAPI</ion-card-subtitle>
+
+  </ion-card>
+</ion-content>
+
+
+
+

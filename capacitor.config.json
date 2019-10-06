@@ -1,0 +1,7 @@
+{
+  "appId": "com.example.app",
+  "appName": "Golf shot advisor",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}

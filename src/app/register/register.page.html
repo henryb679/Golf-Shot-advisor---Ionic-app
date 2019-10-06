@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login"></ion-back-button>
+    </ion-buttons>
+    <ion-title>REGISTER</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-grid>
+  <ion-row justify-content-center-padding>
+    <ion-col justify-content-center-padding size="auto">
+      <h1>GOLF SHOT ADVISOR</h1>
+    </ion-col>
+  </ion-row>
+
+  <ion-row justify-content-center-padding>
+    <ion-col justify-content-center-padding size="auto">
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="assets/golf_shot_advisor_logo.png">
+        </ion-thumbnail>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <form class="form" [formGroup]="fieldValidation"  (ngSubmit)="registerNewUser(fieldValidation.value)">
+
+    <ion-row justify-content-cente-padding>
+      <ion-col justify-content-center-padding size="auto">
+        <ion-item>
+          <ion-input type="text" placeholder="Email address" formControlName="email" class="form-control" required="true"></ion-input>
+
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row justify-content-center-padding>
+      <ion-col justify-content-center-padding size="auto">
+        <ion-item>
+          <ion-input type="password" placeholder="password" formControlName="password" class="form-control" required="true"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-1>
+        <ion-button color="secondary" a (click)="loginPage()">RETURN</ion-button>
+      </ion-col>
+
+      <ion-col col-2>
+        <ion-button class="submit-button" color="primary" type="submit">REGISTER</ion-button>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row>
+      <ion-col padding>
+        <ion-label class="user-response-message">{{messagePrompt}}</ion-label>
+      </ion-col>
+    </ion-row>
+
+  </form>
+</ion-grid>

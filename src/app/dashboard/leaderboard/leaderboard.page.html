@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar color="warning">
+    <ion-title>LEADERBOARD</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<!--  iterates through all the rows of golf records in the database and displays them to the user-->
+  <ion-card *ngFor="let item of golfData ">
+
+  <ion-card-header>
+    <ion-item>Golf course name: {{item.GolfCourseName}}</ion-item>
+  </ion-card-header>
+  <ion-grid>
+    <ion-row padding>
+      <ion-col col-1>Par Result: [{{item.ParResult}}]</ion-col>
+
+      <ion-col col-2>Hole Result: [{{item.HoleResult}}]</ion-col>
+    </ion-row>
+  </ion-grid>
+
+    <ion-card-subtitle>Time: {{item.Timestamp}} Email:  {{item.Email}}</ion-card-subtitle>
+
+</ion-card>
+</ion-content>
+

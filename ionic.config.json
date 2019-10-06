@@ -1,0 +1,8 @@
+{
+  "name": "golf_shot_advisor",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

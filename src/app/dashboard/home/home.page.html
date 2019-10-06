@@ -1,0 +1,113 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>HOME</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <br>
+    <ion-card>
+        <ion-card-header color="tertiary">
+            <ion-card-title>Welcome {{firebaseAuth.email}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-subtitle>You have successfully logged in</ion-card-subtitle>
+
+    </ion-card>
+
+    <br>
+
+    <ion-card color="secondary" (click)="showModal()" *ngIf="gpsAvailable">
+        <ion-card-header>
+            <ion-card-title>Brief weather information for {{city}}</ion-card-title>
+        </ion-card-header>
+
+        <ion-grid>
+            <ion-row>
+                <ion-col col-1>
+                    <ion-icon class="weatherIcon" name="{{weatherType}}"></ion-icon>
+                </ion-col>
+
+                <ion-col col-2>
+                    <ion-item>Average Temperature: {{temp}} °C</ion-item>
+                    <ion-item>Wind Speed: {{windSpeed}} </ion-item>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+        <ion-card-subtitle>Click on the card to see more weather information</ion-card-subtitle>
+    </ion-card>
+
+    <br>
+
+    <ion-card color="--ion-color-dark-shade">
+
+        <ion-card-header>
+            <ion-card-title>
+                <ion-item>Previous Results</ion-item>
+            </ion-card-title>
+        </ion-card-header>
+            <ion-item><b>Sorted by time</b></ion-item>
+
+            <div *ngFor="let item of golfData?.slice()?.reverse()">
+
+            <ion-grid>
+                <ion-row>
+                    <ion-col col-1>
+                        <ion-item color="warning-tint"><b>Golf course name:</b></ion-item>
+                        <ion-item><b>No of holes:</b></ion-item>
+                    </ion-col>
+
+                    <ion-col col-2>
+                        <ion-item>{{item.GolfCourseName}}</ion-item>
+                        <ion-item>{{item.HoleNumber}}</ion-item>
+                    </ion-col>
+                </ion-row>
+
+                <br>
+
+
+                <ion-row>
+                    <ion-col col-1>
+                        <ion-item><b>Par Result:</b></ion-item>
+                    </ion-col>
+                    <ion-col col-2>
+                        <ion-item>(Total) {{item.ParCal}}</ion-item>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col col-1>
+                        <ion-item>[{{item.ParResult}}]</ion-item>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col col-1>
+                        <ion-item><b>Hole Result:</b></ion-item>
+                    </ion-col>
+                    <ion-col col-2>
+                        <ion-item>(Total) {{item.HoleCal}}</ion-item>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col col-1>
+                        <ion-item>[{{item.HoleResult}}]</ion-item>
+                    </ion-col>
+                </ion-row>
+
+            </ion-grid>
+
+            <ion-card-subtitle>
+                <ion-item color="dark">
+                    Results from {{item.Timestamp}}
+                </ion-item>
+            </ion-card-subtitle>
+                <br>
+            </div>
+            <br>
+    </ion-card>
+
+
+</ion-content>
+
