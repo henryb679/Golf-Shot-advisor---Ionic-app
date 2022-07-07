@@ -36,7 +36,7 @@
     "cordova-plugin-x-socialsharing": "^5.4.7",
     "core-js": "^2.5.4",
     "firebase": "^6.3.5",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "ng2-validation": "^4.2.0",
     "ngx-order-pipe": "^2.0.3",
     "promise-polyfill": "8.1.3",
